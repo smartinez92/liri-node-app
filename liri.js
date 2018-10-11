@@ -5,10 +5,11 @@
 // * do-what-it-says
 
 //these add other programs to this one
+require("dotenv").config();
 var dataKeys = require("./keys.js");
 var fs = require('fs'); //file system
-var twitter = require('twitter');
-var spotify = require('spotify');
+var twitter = new Twitter(keys.twitter);
+var spotify = new Spotify(keys.spotify);
 var request = require('request');
 
 
@@ -61,7 +62,7 @@ var getMeSpotify = function(songName) {
 var getTweets = function() {
   var client = new twitter(dataKeys.twitterKeys);
 
-  var params = { screen_name: 'AdamNJahur', count: 20 };
+  var params = { screen_name: 'StevenMartinez', count: 20 };
 
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
